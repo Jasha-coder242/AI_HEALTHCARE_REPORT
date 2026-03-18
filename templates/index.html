@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AI Healthcare Assistant</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#c9eaff,#f5fbff);
+}
+
+/* Navbar */
+
+.navbar{
+background:#0a6ebd;
+color:white;
+padding:18px;
+font-size:24px;
+font-weight:bold;
+text-align:center;
+letter-spacing:1px;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Dashboard Grid */
+
+.dashboard{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
+padding:40px;
+}
+
+/* Cards */
+
+.card{
+background:rgba(255,255,255,0.9);
+backdrop-filter:blur(8px);
+border-radius:12px;
+padding:25px;
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Card title */
+
+.card h2{
+color:#0a6ebd;
+margin-bottom:15px;
+}
+
+/* Inputs */
+
+input{
+width:95%;
+padding:10px;
+margin-top:5px;
+margin-bottom:12px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
+transition:0.2s;
+}
+
+input:focus{
+outline:none;
+border-color:#0a6ebd;
+box-shadow:0 0 5px rgba(10,110,189,0.5);
+}
+
+/* Button */
+
+button{
+background:linear-gradient(to right,#0a6ebd,#0099ff);
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:6px;
+cursor:pointer;
+font-size:15px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+background:linear-gradient(to right,#084c87,#007bd4);
+}
+
+/* Result Box */
+
+.result{
+margin-top:15px;
+padding:12px;
+background:#eaf6ff;
+border-left:4px solid #0a6ebd;
+border-radius:6px;
+font-weight:bold;
+color:#0a6ebd;
+}
+
+/* Footer */
+
+.footer{
+text-align:center;
+padding:20px;
+color:#555;
+font-size:14px;
+}
+
+/* Responsive */
+
+@media(max-width:600px){
+
+.dashboard{
+padding:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+AI Healthcare Assistant
+</div>
+
+<div class="dashboard">
+
+<!-- Heart Risk -->
+
+<div class="card">
+<h2>❤️ Heart Risk Analyzer</h2>
+
+<form action="/heart" method="post">
+
+Age<br>
+<input type="text" name="age" value="{{age}}">
+
+Blood Pressure<br>
+<input type="text" name="bp" value="{{bp}}">
+
+Cholesterol<br>
+<input type="text" name="chol" value="{{chol}}">
+
+Heart Rate<br>
+<input type="text" name="hr" value="{{hr}}">
+
+<button type="submit">Analyze</button>
+
+<div class="result">{{heart_result}}</div>
+
+</form>
+</div>
+
+
+<!-- Disease Predictor -->
+
+<div class="card">
+<h2>🦠 Disease Predictor</h2>
+
+<form action="/disease" method="post">
+
+Fever<br>
+<input type="text" name="fever" value="{{fever}}">
+
+Cough<br>
+<input type="text" name="cough" value="{{cough}}">
+
+Fatigue<br>
+<input type="text" name="fatigue" value="{{fatigue}}">
+
+<button type="submit">Predict</button>
+
+<div class="result">{{disease_result}}</div>
+
+</form>
+</div>
+
+
+<!-- ECG -->
+
+<div class="card">
+<h2>📈 ECG Analyzer</h2>
+
+<form action="/ecg" method="post">
+
+ECG Value<br>
+<input type="text" name="ecg" value="{{ecg}}">
+
+<button type="submit">Analyze</button>
+
+<div class="result">{{ecg_result}}</div>
+
+</form>
+</div>
+
+
+<!-- Image Diagnosis -->
+
+<div class="card">
+<h2>🩻 Medical Image Diagnosis</h2>
+
+<form action="/image" method="post" enctype="multipart/form-data">
+
+Upload Image<br>
+<input type="file" name="image" value="{{image}}">
+
+<button type="submit">Upload</button>
+
+<div class="result">{{image_result}}</div>
+
+</form>
+</div>
+
+</div>
+
+<!-- <div class="footer">
+AI Healthcare Assistant | Machine Learning Based Health Prediction
+</div> -->
+
+</body>
+</html>
